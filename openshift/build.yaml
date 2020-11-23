@@ -5,12 +5,9 @@ metadata:
   name: sample-app
 objects:
 
-- apiVersion: image.openshift.io/v1
+- apiVersion: v1
   kind: ImageStream
   metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewBuild
-    generation: 2
     labels:
       build: sample-app
     name: nodejs
@@ -23,18 +20,14 @@ objects:
       from:
         kind: DockerImage
         name: registry.access.redhat.com/ubi8/nodejs-12:1-64
-      generation: 2
       importPolicy: {}
-      name: 12
+      name: '12'
       referencePolicy:
         type: Local
       
-- apiVersion: image.openshift.io/v1
+- apiVersion: v1
   kind: ImageStream
   metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewBuild
-    generation: 2
     labels:
       build: sample-app
     name: mongodb
@@ -47,13 +40,12 @@ objects:
       from:
         kind: DockerImage
         name: registry.access.redhat.com/rhscl/mongodb-36-rhel7:1-59
-      generation: 2
       importPolicy: {}
-      name: 3.4
+      name: '3.4'
       referencePolicy:
         type: Local
 
-- apiVersion: image.openshift.io/v1
+- apiVersion: v1
   kind: ImageStream
   metadata:
     annotations:
@@ -65,7 +57,7 @@ objects:
   spec:
     lookupPolicy:
       local: false
-- apiVersion: image.openshift.io/v1
+- apiVersion: v1
   kind: ImageStream
   metadata:
     annotations:
