@@ -1,6 +1,8 @@
 ---
 apiVersion: template.openshift.io/v1
 kind: Template
+metadata:
+  name: sample-app
 objects:
 
 - apiVersion: image.openshift.io/v1
