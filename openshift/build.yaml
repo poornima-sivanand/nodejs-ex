@@ -98,7 +98,6 @@ objects:
         from:
           kind: ImageStreamTag
           name: 'nodejs:12'
-          namespace: openshift
       type: Source
     successfulBuildsHistoryLimit: 5
     triggers:

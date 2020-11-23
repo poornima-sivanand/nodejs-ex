@@ -140,8 +140,7 @@
                         ],
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "nodejs:12",
-                            "namespace": "openshift"
+                            "name": "nodejs:12"
                         }
                     },
                     "type": "Source"
