@@ -47,7 +47,7 @@ objects:
     runPolicy: Serial
     source:
       git:
-        uri: 'https://github.com/sclorg/nodejs-ex.git'
+        uri: 'https://github.com/poornima-sivanand/nodejs-ex.git'
       type: Git
     strategy:
       sourceStrategy:
