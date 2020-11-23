@@ -33,7 +33,6 @@ jobs:
         openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
-          'project jjrkby-dev'
-          'apply -f ${GITHUB_WORKSPACE}/openshift/build.yaml'
-          'start-build --follow sample-app'
+          'apply -n jjrkby-dev -f ${GITHUB_WORKSPACE}/openshift/build.yaml'
+          'start-build -n jjrkby-dev --follow sample-app'
  
