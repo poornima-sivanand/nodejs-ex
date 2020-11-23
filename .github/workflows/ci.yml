@@ -32,7 +32,7 @@ jobs:
           parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
           cmd: |
             'version'
-            'apply -f ./openshift/build.yaml'
+            'apply -f ./openshift/build.json'
             'start-build --follow sample-app'
       # - name: Additional Tag
       #   if: github.event_name != 'schedule' && github.ref == 'refs/heads/master'
