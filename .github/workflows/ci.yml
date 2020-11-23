@@ -28,7 +28,7 @@ jobs:
     
     # Set up the oc CLI, authenticate and deploy to OpenShift
     - name: Set up oc CLI and deploy to OpenShift
-      uses: redhat-developer/openshift-actions@v1.1
+      uses: redhat-developer/openshift-actions@v2.1.0
       with:
         openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
