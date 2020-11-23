@@ -41,5 +41,6 @@ jobs:
         openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
+          ls
           oc process -f ${GITHUB_WORKSPACE}/openshift/build.yaml | oc apply -n ${PROJECT} -f -
  
