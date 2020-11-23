@@ -16,7 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: list current files
-        run: ls ${GITHUB_WORKSPACE}
+        run: echo ${GITHUB_WORKSPACE}
+      - name: list current files
+        run: pwd
+      - name: list current files
+        run: ls 
       - name: Image Build
         # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
         uses: redhat-developer/openshift-actions@v1.1
