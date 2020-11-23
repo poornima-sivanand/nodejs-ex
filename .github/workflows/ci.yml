@@ -42,5 +42,5 @@ jobs:
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
           oc project ${PROJECT}
-          oc process -f ${GITHUB_WORKSPACE}/openshift/build.yaml | oc apply -f -
+          oc apply -f ${GITHUB_WORKSPACE}/openshift/build.yaml
  
