@@ -19,8 +19,8 @@ jobs:
         # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
         uses: redhat-developer/openshift-actions@v1.1
         with:
-          openshift_server_url: ${{ secrets.OpenShiftServerURL}}
-          parameters: '{"apitoken": "${{ secrets.OpenShiftToken }}", "acceptUntrustedCerts": "true"}'
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL}}
+          parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
           cmd: |
             'version'
             'apply -n jjrkby-dev -f ./openshift/build.yaml'
