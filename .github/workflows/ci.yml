@@ -18,16 +18,16 @@ on:
     branches:
       - '**'
       - '!master'
-
+defaults:
+  run:
+    working-directory: ./
 jobs:
   build:
     name: Setup and Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
+    
     # Set up the oc CLI, authenticate and deploy to OpenShift
     - name: Set up oc CLI and deploy to OpenShift
       uses: redhat-developer/openshift-actions@v2.1.0
@@ -37,5 +37,5 @@ jobs:
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
           oc project jjrkby-dev
-          oc apply -f ${GITHUB_WORKSPACE}/openshift/build.yaml
+          oc apply -f ./openshift/build.yaml
  
