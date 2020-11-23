@@ -32,7 +32,8 @@ jobs:
           parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
           cmd: |
             'version'
-            'apply -n jjrkby-dev -f ./openshift/build.yaml'
+            'apply -f ./openshift/build.yaml'
+            'start-build --follow sample-app'
       # - name: Additional Tag
       #   if: github.event_name != 'schedule' && github.ref == 'refs/heads/master'
       #   uses: redhat-developer/openshift-actions@v1.1
