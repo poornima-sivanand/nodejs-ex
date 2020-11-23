@@ -8,6 +8,78 @@
             "kind": "ImageStream",
             "metadata": {
                 "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewBuild"
+                },
+                "generation": 2,
+                "labels": {
+                    "build": "sample-app"
+                },
+                "name": "nodejs:12"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                },
+                "tags": [
+                    {
+                        "annotations": {
+                            "openshift.io/imported-from": "registry.access.redhat.com/ubi8/nodejs-12:1-64"
+                        },
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "registry.access.redhat.com/ubi8/nodejs-12:1-64"
+                        },
+                        "generation": 2,
+                        "importPolicy": {},
+                        "name": "nodejs:12",
+                        "referencePolicy": {
+                            "type": "Local"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewBuild"
+                },
+                "generation": 2,
+                "labels": {
+                    "build": "sample-app"
+                },
+                "name": "mongodb:3.4"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                },
+                "tags": [
+                    {
+                        "annotations": {
+                            "openshift.io/imported-from": "registry.access.redhat.com/rhscl/mongodb-36-rhel7:1-59"
+                        },
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "registry.access.redhat.com/rhscl/mongodb-36-rhel7:1-59"
+                        },
+                        "generation": 2,
+                        "importPolicy": {},
+                        "name": "mongodb:3.4",
+                        "referencePolicy": {
+                            "type": "Local"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
                     "description": "Keeps track of changes in the application image"
                 },
                 "labels": {
