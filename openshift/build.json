@@ -14,7 +14,7 @@
                 "labels": {
                     "build": "sample-app"
                 },
-                "name": "nodejs:12"
+                "name": "nodejs"
             },
             "spec": {
                 "lookupPolicy": {
@@ -31,7 +31,7 @@
                         },
                         "generation": 2,
                         "importPolicy": {},
-                        "name": "nodejs:12",
+                        "name": 12,
                         "referencePolicy": {
                             "type": "Local"
                         }
@@ -50,7 +50,7 @@
                 "labels": {
                     "build": "sample-app"
                 },
-                "name": "mongodb:3.4"
+                "name": "mongodb"
             },
             "spec": {
                 "lookupPolicy": {
@@ -67,7 +67,7 @@
                         },
                         "generation": 2,
                         "importPolicy": {},
-                        "name": "mongodb:3.4",
+                        "name": 3.4,
                         "referencePolicy": {
                             "type": "Local"
                         }

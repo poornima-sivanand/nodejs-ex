@@ -13,7 +13,7 @@ objects:
     generation: 2
     labels:
       build: sample-app
-    name: nodejs:12
+    name: nodejs
   spec:
     lookupPolicy:
       local: false
@@ -25,7 +25,7 @@ objects:
         name: registry.access.redhat.com/ubi8/nodejs-12:1-64
       generation: 2
       importPolicy: {}
-      name: nodejs:12
+      name: 12
       referencePolicy:
         type: Local
       
@@ -37,7 +37,7 @@ objects:
     generation: 2
     labels:
       build: sample-app
-    name: mongodb:3.4
+    name: mongodb
   spec:
     lookupPolicy:
       local: false
@@ -49,7 +49,7 @@ objects:
         name: registry.access.redhat.com/rhscl/mongodb-36-rhel7:1-59
       generation: 2
       importPolicy: {}
-      name: mongodb:3.4
+      name: 3.4
       referencePolicy:
         type: Local
 
