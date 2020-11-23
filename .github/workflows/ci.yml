@@ -1,38 +1,36 @@
-# This workflow will set up the oc CLI in your GitHub Action workflow and deploy your application to your OpenShift cluster.
-#
-# This workflow assumes you already have access to an OpenShift cluster.
-# For instructions to get started with OpenShift see https://www.openshift.com/try
-#
-# To configure this workflow:
-#
-# 1. Set up a secret in your repository named OPENSHIFT_SERVER_URL with the value of your OpenShift server URL.
-# 
-# 2. Set up another secret named API_TOKEN with the value of a valid token to authenticate to OpenShift.
-#
-# 3. Change the values for the PROJECT and APP_NAME environment variables  (below).
-#
-# For more information on the OpenShift Action, refer to https://github.com/redhat-developer/openshift-actions
-name: Build and Deploy to OpenShift
-on:
-  push:
-    branches:
-      - '**'
-      - '!master'
-
+name: Build Container
+on: 
+  workflow_dispatch:
+    # inputs:
+    #   version:
+    #     description: 'Version'     
+    #     required: true
+    #     default: 'latest'
+  schedule:
+    - cron: "* * * * *"  # Monday at 4AM
+defaults:
+  run:
+    working-directory: ./
 jobs:
-  build:
-    name: Setup and Deploy
+  ocp-build:
     runs-on: ubuntu-latest
-
     steps:
-    
-    # Set up the oc CLI, authenticate and deploy to OpenShift
-    - name: Set up oc CLI and deploy to OpenShift
-      uses: redhat-developer/openshift-actions@v2.1.0
-      with:
-        openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
-        parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
-        cmd: |
-          'apply -n jjrkby-dev -f ${GITHUB_WORKSPACE}/openshift/build.yaml'
-          'start-build -n jjrkby-dev --follow sample-app'
- 
+      - name: Image Build
+        # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
+        uses: redhat-developer/openshift-actions@v1.1
+        with:
+          openshift_server_url: ${{ secrets.OpenShiftServerURL}}
+          parameters: '{"apitoken": "${{ secrets.OpenShiftToken }}", "acceptUntrustedCerts": "true"}'
+          cmd: |
+            'version'
+            'apply -n jjrkby-dev -f ./openshift/build.yaml'
+      # - name: Additional Tag
+      #   if: github.event_name != 'schedule' && github.ref == 'refs/heads/master'
+      #   uses: redhat-developer/openshift-actions@v1.1
+      #   with:
+      #     version: "latest"
+      #     openshift_server_url: ${{ secrets.OpenShiftServerURL}}
+      #     parameters: '{"apitoken": "${{ secrets.OpenShiftToken }}", "acceptUntrustedCerts": "true"}'
+      #     cmd: |
+      #       'version'
+      #       'tag -n bcgov-tools bcgov-tools/patroni-postgres:12.4-latest bcgov-tools/patroni-postgres:12.4-${{ github.event.inputs.version }}'
