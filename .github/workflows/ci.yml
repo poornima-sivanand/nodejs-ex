@@ -22,8 +22,6 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   PROJECT: jjrkby-dev
-  APP_NAME: sample-app
-
 jobs:
   build:
     name: Setup and Deploy
