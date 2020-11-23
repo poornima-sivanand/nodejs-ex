@@ -19,9 +19,6 @@ on:
       - '**'
       - '!master'
 
-# Environment variables available to all jobs and steps in this workflow
-env:
-  PROJECT: jjrkby-dev
 jobs:
   build:
     name: Setup and Deploy
@@ -39,6 +36,6 @@ jobs:
         openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
-          oc project ${PROJECT}
+          oc project jjrkby-dev
           oc apply -f ${GITHUB_WORKSPACE}/openshift/build.yaml
  
