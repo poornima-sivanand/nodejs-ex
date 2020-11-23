@@ -18,9 +18,7 @@ on:
     branches:
       - '**'
       - '!master'
-defaults:
-  run:
-    working-directory: ./
+
 jobs:
   build:
     name: Setup and Deploy
@@ -30,12 +28,12 @@ jobs:
     
     # Set up the oc CLI, authenticate and deploy to OpenShift
     - name: Set up oc CLI and deploy to OpenShift
-      uses: redhat-developer/openshift-actions@v2.1.0
+      uses: redhat-developer/openshift-actions@v1.1
       with:
-        version: '4.3'
         openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
         parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
         cmd: |
-          oc project jjrkby-dev
-          oc apply -f ./openshift/build.yaml
+          'project jjrkby-dev'
+          'apply -f ${GITHUB_WORKSPACE}/openshift/build.yaml'
+          'start-build --follow sample-app'
  
