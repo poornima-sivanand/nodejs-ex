@@ -118,7 +118,7 @@
                 "name": "sample-app"
             },
             "spec": {
-                "host": "nodejs-sample-sample-dev.apps-crc.testing",
+                "host": "sampleapp-jjrkby-dev.pathfinder.gov.bc.ca",
                 "to": {
                     "kind": "Service",
                     "name": "sample-app",
