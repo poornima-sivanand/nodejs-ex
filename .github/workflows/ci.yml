@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened]
   issue_comment:
-    types: ['deploy'] # Monday at 4AM
+    types: [created] # Monday at 4AM
 defaults:
   run:
     working-directory: ./
