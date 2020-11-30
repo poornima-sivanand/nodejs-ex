@@ -8,6 +8,16 @@ defaults:
   run:
     working-directory: ./
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '@deploy'
+      - run: 'echo Found it!'
+        if: steps.check.outputs.triggered == 'true'
+
   ocp-build:
     runs-on: ubuntu-latest
     steps:
