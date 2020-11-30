@@ -41,10 +41,22 @@ jobs:
           cmd: |
             'version'
             'apply -f ./openshift/build.json'
-            
+  ocp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2  
+      - name: list current files
+        run: echo ${GITHUB_WORKSPACE}
+      - name: list current files
+        run: pwd
+      - name: list current files
+        run: ls     
       - name: Image Deploy
         # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
         uses: redhat-developer/openshift-actions@v2.1.0
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         with:
           version: 4.3
           openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL}}
