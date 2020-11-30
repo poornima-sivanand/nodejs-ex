@@ -1,13 +1,9 @@
 name: Build Container
 on: 
-  workflow_dispatch:
-    # inputs:
-    #   version:
-    #     description: 'Version'     
-    #     required: true
-    #     default: 'latest'
-  schedule:
-    - cron: "0 12 * * *"  # Monday at 4AM
+  pull_request:
+    types: [opened]
+  issue_comment:
+    types: ['deploy'] # Monday at 4AM
 defaults:
   run:
     working-directory: ./
@@ -33,6 +29,18 @@ jobs:
           cmd: |
             'version'
             'apply -f ./openshift/build.json'
+            
+      - name: Image Deploy
+        # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
+        uses: redhat-developer/openshift-actions@v2.1.0
+        with:
+          version: 4.3
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL}}
+          parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
+          cmd: |
+            'version'
+            'apply -f ./openshift/deploy.json'
+      
       # - name: Additional Tag
       #   if: github.event_name != 'schedule' && github.ref == 'refs/heads/master'
       #   uses: redhat-developer/openshift-actions@v1.1
